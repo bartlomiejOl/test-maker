@@ -51,52 +51,56 @@ const registerUser = async (req, res) => {
 // Login endpoint
 
 const loginUser = async (req, res) => {
-  const { email, password } = req.body;
   try {
+    const { email, password } = req.body;
+
+    // Check if user exist
     const user = await User.findOne({ email });
     if (!user) {
-      return res.json({ error: 'Nieprawidłowy email lub hasło.' });
+      return res.json({
+        error: 'Podany email nie istnieje',
+      });
     }
-
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.json({ error: 'Nieprawidłowy email lub hasło.' });
+    // Check password match
+    const match = await comparePassword(password, user.password);
+    if (match) {
+      jwt.sign(
+        { email: user.email, id: user._id, name: user.name },
+        process.env.JWT_SECRET,
+        {},
+        (err, token) => {
+          if (err) throw err;
+          res.cookie('token', token).json(user);
+          setUser(user);
+          navigate('/home');
+        }
+      );
     }
-
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
-
-    res.json({
-      user: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-      },
-      token,
-    });
+    if (!match) {
+      res.json({
+        error: 'Hasło nie pasuje',
+      });
+    }
   } catch (error) {
     console.log(error);
-    res.status(500).send('Wystąpił błąd serwera.');
   }
 };
 
 const getProfile = async (req, res) => {
-  try {
-    const user = await User.findById(req.user._id);
-    if (!user) {
-      return res.status(404).json({ error: 'Użytkownik nie znaleziony.' });
-    }
-
-    res.json({
-      user: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-      },
+  const { token } = req.cookies;
+  if (token) {
+    jwt.verify(token, process.env.JWT_SECRET, {}, (err, user) => {
+      if (err) throw err;
+      res.json(user);
     });
-  } catch (error) {
-    console.log(error);
-    res.status(500).send('Wystąpił błąd serwera.');
+  } else {
+    res.json(null);
   }
+};
+
+const logoutUser = (req, res) => {
+  res.clearCookie('token');
+  res.json({ message: 'Pomyślnie wylogowano' });
 };
 
 const addQuestionToDatabase = async (req, res) => {
