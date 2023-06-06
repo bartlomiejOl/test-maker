@@ -1,0 +1,196 @@
+.Scale {
+  /* background-color: #18191A; */
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.containerScale {
+  display: flex;
+  justify-content: flex-start;
+  /* background-color: #242526; */
+  border: 2px solid #7211f1;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+  border-radius: 20px;
+  width: 600px;
+  height: 600px;
+
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+}
+
+.containerScale::-webkit-scrollbar {
+  display: none;
+}
+
+.headerScale {
+  color: #7211f1;
+}
+
+/* .formScale{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+} */
+
+.newSytemDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.newSytemDiv button {
+  padding: 15px;
+  border-radius: 15px;
+  width: 70px;
+}
+
+.newSytemDiv .numberOfGrades {
+  padding: 15px;
+  border-radius: 15px;
+  width: 70px;
+}
+
+.newSytemDiv .nameSystem {
+  padding: 15px;
+  border-radius: 15px;
+  width: 100px;
+}
+
+.reset {
+  color: black;
+  font-size: 20px;
+}
+
+.formGrades {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.downloadPdf {
+  width: 130px;
+  padding: 15px;
+  border-radius: 15px;
+  border: none;
+}
+
+.pdfDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pdfDiv input {
+  width: 150px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.popup {
+  position: relative;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+}
+
+.popupButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+
+.popupNo {
+  padding: 15px;
+  border-radius: 15px;
+  width: 100px;
+  border: none;
+  color: white;
+  background-color: #7211f1;
+}
+
+.popupYes {
+  padding: 15px;
+  border-radius: 15px;
+  width: 100px;
+  border: none;
+  background-color: rgb(199, 39, 39);
+  color: white;
+}
+
+.generateButton {
+  border: none;
+}
+
+.addNewSystemButton {
+  width: 230px;
+  padding: 15px;
+  border-radius: 15px;
+  border: none;
+  background-color: #7211f1;
+  color: white;
+}
+
+.inputRange {
+  width: 10px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.headerAdd {
+  text-align: center;
+  color: #7211f1;
+}
+
+.gradesDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.saveButton {
+  width: 100px;
+  padding: 15px;
+  border-radius: 15px;
+  border: none;
+  background-color: #7211f1;
+  color: white;
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1300px) {
+  .containerScale {
+    width: 600px;
+    height: 500px;
+  }
+  .downloadPdf {
+    margin-bottom: 20px;
+  }
+}

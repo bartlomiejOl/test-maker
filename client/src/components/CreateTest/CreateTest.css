@@ -1,0 +1,298 @@
+.CreateTest {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerCreateTest {
+  display: flex;
+  justify-content: flex-start;
+  border: 2px solid #7211f1;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  width: 600px;
+  height: 600px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+}
+
+.containerCreateTest::-webkit-scrollbar {
+  display: none;
+}
+
+.addQuestionButton {
+  padding: 10px;
+  width: 130px;
+  border: none;
+  border-radius: 10px;
+  background-color: #7211f1;
+  color: white;
+}
+
+.searchForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchButton {
+  width: 80px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+.popup ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px;
+}
+
+.popup input {
+  width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.popup li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+  width: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: height 0.3s ease-out;
+}
+
+.popup li:hover {
+  background-color: #f7f7f7;
+}
+
+.popup li.expanded {
+  min-height: 200px;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.popup li.expanded p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.popup li p {
+  margin: 0;
+}
+
+.popup li .answer {
+  display: none;
+  margin-top: 10px;
+}
+
+.popup li.expanded .answer {
+  display: block;
+}
+
+.questionText {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.questionItem {
+  position: relative;
+}
+
+.questionItem .addIcon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.questionSelected {
+  max-height: 50px;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.allQuestions ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px;
+}
+
+.allQuestions input {
+  width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.allQuestions li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+  width: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: height 0.3s ease-out;
+  overflow: auto;
+}
+
+.allQuestions li::-webkit-scrollbar {
+  display: none;
+}
+
+.allQuestions li:hover {
+  background-color: #f7f7f7;
+}
+
+.allQuestions li.expanded {
+  min-height: 200px;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.allQuestions li.expanded p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.allQuestions li p {
+  margin: 0;
+}
+
+.allQuestions li .answer {
+  display: none;
+  margin-top: 10px;
+}
+
+.allQuestions li.expanded .answer {
+  display: block;
+}
+
+.questionSelected {
+  position: relative;
+}
+
+.deleteIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: red;
+}
+
+.headerAllQuestions {
+  display: flex;
+  justify-content: center;
+}
+.downloadPdfQuestion {
+  padding: 10px;
+  width: 130px;
+  border-radius: 15px;
+  border: none;
+}
+
+.buttonsDiv {
+  width: 500px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+}
+.namePdfDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.namePdfDiv input {
+  padding: 10px;
+  width: 130px;
+  border-radius: 15px;
+}
+
+.pdfsFields {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.testField {
+  padding: 10px;
+  border-radius: 15px;
+  width: 150px;
+}
+
+.testData {
+  padding: 10px;
+  width: 130px;
+  border-radius: 15px;
+  width: 100px;
+}
+
+.multiSelect {
+  width: 220px;
+  margin-top: 20px;
+}
+
+.questionItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.questionItem button {
+  margin-left: 10px;
+  margin-bottom: 5px;
+  border: none;
+  color: white;
+  background: none;
+  cursor: pointer;
+}
+
+.questionItem button:disabled {
+  cursor: not-allowed;
+}
+.moveButtons {
+  display: flex;
+  flex-direction: column;
+}
+.arrow {
+  color: black;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1300px) {
+  .containerCreateTest {
+    width: 600px;
+    height: 500px;
+  }
+}

@@ -1,0 +1,28 @@
+.Home {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+}
+
+.informationDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  color: #7211f1;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.loginButton {
+  padding: 15px 30px;
+  background-color: #79d813;
+  border: none;
+  border-radius: 15px;
+  color: white;
+}
+
+.loginButton:hover {
+  box-shadow: 6px 6px rgba(0, 0, 0, 0.3);
+}

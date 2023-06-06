@@ -1,0 +1,120 @@
+.SearchQuestions {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerSearchQuestions {
+  display: flex;
+  justify-content: flex-start;
+  /* background-color: #242526; */
+  border: 2px solid #7211f1;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  width: 600px;
+  height: 600px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+}
+
+.containerSearchQuestions::-webkit-scrollbar {
+  display: none;
+}
+
+.topDiv {
+  width: 600px;
+  height: 100px;
+  background-color: #7211f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topDiv input {
+  width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+.searchForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchButton {
+  width: 80px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+.contentDiv ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px;
+}
+
+.contentDiv li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+  width: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: height 0.3s ease-out;
+}
+
+.contentDiv li:hover {
+  background-color: #f7f7f7;
+}
+
+.contentDiv li.expanded {
+  min-height: 200px;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.contentDiv li.expanded p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.contentDiv li p {
+  margin: 0;
+}
+
+.contentDiv li .answer {
+  display: none;
+  margin-top: 10px;
+}
+
+.contentDiv li.expanded .answer {
+  display: block;
+}
+
+.questionText {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1300px) {
+  .containerSearchQuestions {
+    width: 600px;
+    height: 500px;
+  }
+}

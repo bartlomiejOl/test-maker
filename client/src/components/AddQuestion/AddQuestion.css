@@ -1,0 +1,84 @@
+.AddQuestion {
+  /* background-color: #18191A; */
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerQuestion {
+  display: flex;
+  justify-content: flex-start;
+  /* background-color: #242526; */
+  border: 2px solid #7211f1;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  width: 600px;
+  height: 600px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+}
+
+.containerQuestion::-webkit-scrollbar {
+  display: none;
+}
+
+.headerQuestion {
+  color: #7211f1;
+  font-size: 20px;
+}
+
+.formDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.questionForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.questionForm label {
+  color: black;
+}
+
+.questionForm textarea {
+  padding: 5px;
+  border-radius: 10px;
+  width: 300px;
+  resize: none;
+}
+
+.questionForm input {
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.questionForm div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.questionForm .submitQuestion {
+  padding: 10px;
+  width: 100px;
+  border: none;
+  background-color: #7211f1;
+  color: white;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1300px) {
+  .containerQuestion {
+    width: 600px;
+    height: 500px;
+  }
+}

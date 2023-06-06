@@ -1,0 +1,92 @@
+.navigation {
+  position: fixed;
+  inset: 40px 0 40px 20px;
+  background: #7211f1;
+  width: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  border-radius: 20px;
+  height: 500px;
+}
+
+.sideBarButton {
+  color: white;
+}
+
+.navigation.active {
+  width: 250px;
+}
+
+.menuToggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.icons-hamb {
+  font-size: 25px;
+  position: absolute;
+  top: 5%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+.menuList {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 90px;
+  margin-right: 40px;
+}
+
+.menuList .text {
+  display: none;
+}
+
+.menuList.active .text {
+  display: block;
+}
+
+.iconNav {
+  font-size: 25px;
+}
+
+.navigation .menuList li {
+  list-style: none;
+  position: relative;
+  width: 100%;
+  height: 70px;
+  border-radius: 12px;
+  border: 5px solid transparent;
+  transition: 0.5s;
+}
+
+.profile,
+.addQuestion,
+.searchQuestion,
+.createScale,
+.createTest,
+.generateTest,
+.logout {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  background-color: transparent;
+}
+
+.profile:hover,
+.addQuestion:hover,
+.searchQuestion:hover,
+.createScale:hover,
+.createTest:hover,
+.generateTest:hover,
+.logout:hover {
+  background-color: #a366f3;
+}

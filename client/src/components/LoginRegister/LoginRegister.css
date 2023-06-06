@@ -1,0 +1,153 @@
+.loginContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  gap: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+  color: #a366f3;
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.registerDescription.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(
+    90deg,
+    rgba(163, 102, 243, 1) 26%,
+    rgba(160, 17, 241, 1) 58%
+  );
+  color: white;
+  height: 100vh;
+  padding: 20px;
+  width: 550px;
+  z-index: 2;
+}
+
+.loginContainer.active {
+  flex-direction: row-reverse;
+  width: 100%;
+  z-index: 2;
+}
+
+.registerForm.active {
+  display: flex;
+  flex-direction: column;
+  margin-left: 200px;
+}
+
+.loginDescription.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(
+    90deg,
+    rgba(163, 102, 243, 1) 26%,
+    rgba(160, 17, 241, 1) 58%
+  );
+  color: white;
+  height: 100vh;
+  padding: 20px;
+  width: 550px;
+}
+
+.loginForm:not(.active),
+.registerForm:not(.active) {
+  display: none;
+}
+
+.loginDescription:not(.active),
+.registerDescription:not(.active) {
+  display: none;
+}
+
+.form-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-div input {
+  padding: 15px;
+  border-radius: 15px;
+  width: 190px;
+  border-color: #a366f3;
+}
+
+.input-icon {
+  font-size: 25px;
+}
+
+.buttonLogReg {
+  padding: 15px 30px;
+  border-radius: 15px;
+  border: none;
+  background-color: #a366f3;
+  color: white;
+}
+
+.registerButton,
+.loginButton {
+  padding: 15px 30px;
+  background-color: #a366f3;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  box-shadow: 6px 6px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.buttonLogReg:hover {
+  box-shadow: 6px 6px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.imageLogin {
+  width: 500px;
+  height: 500px;
+}
+
+.headerDescription {
+  font-size: 32px;
+  font-weight: 700;
+  transform: translateY(-200px);
+  opacity: 0;
+  animation: slidedown 1s ease-out 0.5s forwards;
+}
+
+@keyframes slidedown {
+  0% {
+    transform: translateY(-200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-right {
+  from {
+    margin-left: 0;
+  }
+  to {
+    margin-left: 100%;
+  }
+}
