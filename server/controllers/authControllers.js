@@ -4,7 +4,6 @@ const TestModel = require('../models/test');
 const GradeModel = require('../models/grade');
 const { hashPassword, comparePassword } = require('../helpers/auth');
 const jwt = require('jsonwebtoken');
-console.log('jsonwebtoken:', jwt);
 
 const test = (req, res) => {
   res.json('test działa');
@@ -64,9 +63,6 @@ const loginUser = async (req, res) => {
     }
     // Check password match
     const match = await comparePassword(password, user.password);
-    console.log('JWT_SECRET:', process.env.JWT_SECRET);
-    console.log('Request URL:', req.url);
-    console.log('Request Body:', req.body);
     if (match) {
       jwt.sign(
         { email: user.email, id: user._id, name: user.name },
@@ -74,15 +70,14 @@ const loginUser = async (req, res) => {
         {},
         (err, token) => {
           if (err) {
-            console.error(err); // Dodaj ten wiersz
             throw err;
           }
-          console.log(token); // Dodaj ten wiersz
           res
             .cookie('token', token, {
               httpOnly: true,
               secure: true,
-              domain: 'test-maker-hcto.onrender.com',
+              sameSite: 'None',
+              domain: '.netlify.app',
             })
             .json(user);
           setUser(user);

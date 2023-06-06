@@ -20,6 +20,7 @@ app.use((req, res, next) => {
   );
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Set-Cookie', 'token=example; SameSite=None; Secure');
   next();
 });
 app.use(express.json());
