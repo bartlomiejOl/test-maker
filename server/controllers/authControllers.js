@@ -79,7 +79,11 @@ const loginUser = async (req, res) => {
           }
           console.log(token); // Dodaj ten wiersz
           res
-            .cookie('token', token, { httpOnly: true, secure: true })
+            .cookie('token', token, {
+              httpOnly: true,
+              secure: true,
+              domain: 'test-maker-hcto.onrender.com',
+            })
             .json(user);
           setUser(user);
           res.redirect('/profile');
