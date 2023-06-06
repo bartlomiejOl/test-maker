@@ -28,7 +28,7 @@ const {
 router.use(
   cors({
     credentials: true,
-    origin: 'https://test-maker.netlify.app',
+    origin: 'http://localhost:3000',
   })
 );
 
