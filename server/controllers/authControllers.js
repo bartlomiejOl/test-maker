@@ -78,9 +78,11 @@ const loginUser = async (req, res) => {
             throw err;
           }
           console.log(token); // Dodaj ten wiersz
-          res.cookie('token', token).json(user);
+          res
+            .cookie('token', token, { httpOnly: true, secure: true })
+            .json(user);
           setUser(user);
-          navigate('/home');
+          res.redirect('/profile');
         }
       );
     }
