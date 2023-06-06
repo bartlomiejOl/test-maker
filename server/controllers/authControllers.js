@@ -64,10 +64,10 @@ const loginUser = async (req, res) => {
     }
     // Check password match
     const match = await comparePassword(password, user.password);
+    console.log('JWT_SECRET:', process.env.JWT_SECRET);
+    console.log('Request URL:', req.url);
+    console.log('Request Body:', req.body);
     if (match) {
-      console.log('JWT_SECRET:', process.env.JWT_SECRET);
-      console.log('Request URL:', req.url);
-      console.log('Request Body:', req.body);
       jwt.sign(
         { email: user.email, id: user._id, name: user.name },
         process.env.JWT_SECRET,
