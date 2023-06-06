@@ -51,56 +51,52 @@ const registerUser = async (req, res) => {
 // Login endpoint
 
 const loginUser = async (req, res) => {
+  const { email, password } = req.body;
   try {
-    const { email, password } = req.body;
-
-    // Check if user exist
     const user = await User.findOne({ email });
     if (!user) {
-      return res.json({
-        error: 'Podany email nie istnieje',
-      });
+      return res.json({ error: 'Nieprawidłowy email lub hasło.' });
     }
-    // Check password match
-    const match = await comparePassword(password, user.password);
-    if (match) {
-      jwt.sign(
-        { email: user.email, id: user._id, name: user.name },
-        process.env.JWT_SECRET,
-        {},
-        (err, token) => {
-          if (err) throw err;
-          res.cookie('token', token).json(user);
-          setUser(user);
-          navigate('/home');
-        }
-      );
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.json({ error: 'Nieprawidłowy email lub hasło.' });
     }
-    if (!match) {
-      res.json({
-        error: 'Hasło nie pasuje',
-      });
-    }
+
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+
+    res.json({
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+      },
+      token,
+    });
   } catch (error) {
     console.log(error);
+    res.status(500).send('Wystąpił błąd serwera.');
   }
 };
 
 const getProfile = async (req, res) => {
-  const { token } = req.cookies;
-  if (token) {
-    jwt.verify(token, process.env.JWT_SECRET, {}, (err, user) => {
-      if (err) throw err;
-      res.json(user);
-    });
-  } else {
-    res.json(null);
-  }
-};
+  try {
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      return res.status(404).json({ error: 'Użytkownik nie znaleziony.' });
+    }
 
-const logoutUser = (req, res) => {
-  res.clearCookie('token');
-  res.json({ message: 'Pomyślnie wylogowano' });
+    res.json({
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Wystąpił błąd serwera.');
+  }
 };
 
 const addQuestionToDatabase = async (req, res) => {
