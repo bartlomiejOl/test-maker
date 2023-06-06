@@ -28,7 +28,7 @@ const {
 router.use(
   cors({
     credentials: true,
-    origin: 'https://test-maker-hcto.onrender.com',
+    origin: 'https://test-maker.netlify.app',
   })
 );
 
