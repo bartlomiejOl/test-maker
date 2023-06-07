@@ -83,6 +83,7 @@ const loginUser = async (req, res) => {
 const getProfile = async (req, res) => {
   try {
     const token = req.headers.authorization;
+    console.log('Token: ' + token);
     if (!token) {
       return res.status(401).json({ error: 'Brak tokena autoryzacyjnego' });
     }
