@@ -69,9 +69,7 @@ function LoginRegister() {
         toast.error(data.error);
       } else {
         setDataLogin({});
-        // Zapisz token autoryzacyjny w sessionStorage
         sessionStorage.setItem('token', data.token);
-        // Przeładuj stronę
         navigate('/profile');
       }
     } catch (error) {

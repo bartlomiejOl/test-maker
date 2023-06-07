@@ -83,16 +83,12 @@ const loginUser = async (req, res) => {
 const getProfile = async (req, res) => {
   try {
     const token = req.headers.authorization;
-    console.log('Token: ' + token);
-    console.log('JWT_SECRET:', process.env.JWT_SECRET);
     if (!token) {
       return res.status(401).json({ error: 'Brak tokena autoryzacyjnego' });
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const { email, id, name } = decoded;
-
-    // Tutaj możesz pobrać dodatkowe informacje o użytkowniku z bazy danych, jeśli są potrzebne
 
     res.json({ email, id, name });
   } catch (error) {

@@ -119,9 +119,14 @@ function Profile() {
     : '';
 
   useEffect(() => {
-    if (!user) {
+    const token = sessionStorage.getItem('token');
+    if (token) {
       axios
-        .get('/profile')
+        .get('/profile', {
+          headers: {
+            Authorization: token,
+          },
+        })
         .then(({ data }) => {
           setUser(data);
         })
@@ -129,7 +134,7 @@ function Profile() {
           console.log(error);
         });
     }
-  }, [user, setUser]);
+  }, []);
 
   const handleLogout = () => {
     axios

@@ -22,7 +22,7 @@ function Home() {
     }
 
     fetchData();
-  }, [user, navigate, setUser]);
+  }, [navigate, setUser]);
 
   const handleLogout = () => {
     axios
@@ -37,7 +37,7 @@ function Home() {
   };
 
   const goToLogin = () => {
-    navigate('login');
+    navigate('/login');
   };
 
   return (

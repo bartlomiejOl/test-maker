@@ -11,6 +11,7 @@ export function UserContextProvider({ children }) {
       const token = sessionStorage.getItem('token');
       if (token) {
         axios.defaults.headers.common['Authorization'] = token;
+
         axios
           .get('/profile')
           .then(({ data }) => {
