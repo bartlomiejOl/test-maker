@@ -54,7 +54,7 @@ const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Check if user exist
+    // Check if user exists
     const user = await User.findOne({ email });
     if (!user) {
       return res.json({
@@ -64,27 +64,13 @@ const loginUser = async (req, res) => {
     // Check password match
     const match = await comparePassword(password, user.password);
     if (match) {
-      jwt.sign(
+      const token = jwt.sign(
         { email: user.email, id: user._id, name: user.name },
-        process.env.JWT_SECRET,
-        {},
-        (err, token) => {
-          if (err) {
-            throw err;
-          }
-          res
-            .cookie('token', token, {
-              httpOnly: true,
-              secure: true,
-              sameSite: 'None',
-            })
-            .json(user);
-          setUser(user);
-          res.redirect('/profile');
-        }
+        process.env.JWT_SECRET
       );
-    }
-    if (!match) {
+
+      res.json({ token });
+    } else {
       res.json({
         error: 'Hasło nie pasuje',
       });
@@ -95,19 +81,24 @@ const loginUser = async (req, res) => {
 };
 
 const getProfile = async (req, res) => {
-  const { token } = req.cookies;
-  if (token) {
-    jwt.verify(token, process.env.JWT_SECRET, {}, (err, user) => {
-      if (err) throw err;
-      res.json(user);
-    });
-  } else {
-    res.json(null);
+  try {
+    const token = req.headers.authorization;
+    if (!token) {
+      return res.status(401).json({ error: 'Brak tokena autoryzacyjnego' });
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const { email, id, name } = decoded;
+
+    // Tutaj możesz pobrać dodatkowe informacje o użytkowniku z bazy danych, jeśli są potrzebne
+
+    res.json({ email, id, name });
+  } catch (error) {
+    res.status(401).json({ error: 'Nieprawidłowy token autoryzacyjny' });
   }
 };
 
 const logoutUser = (req, res) => {
-  res.clearCookie('token');
   res.json({ message: 'Pomyślnie wylogowano' });
 };
 
