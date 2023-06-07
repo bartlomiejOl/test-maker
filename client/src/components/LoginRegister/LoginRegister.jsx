@@ -69,7 +69,10 @@ function LoginRegister() {
         toast.error(data.error);
       } else {
         setDataLogin({});
-        navigate('/');
+        // Zapisz token autoryzacyjny w sessionStorage
+        sessionStorage.setItem('token', data.token);
+        // Przeładuj stronę
+        navigate('/profile');
       }
     } catch (error) {
       console.log(error);
@@ -87,7 +90,11 @@ function LoginRegister() {
         <button className="registerButton" onClick={handleRegisterButtonClick}>
           Zarejestruj
         </button>
-        <img src={registerImage} className="imageLogin"></img>
+        <img
+          src={registerImage}
+          className="imageLogin"
+          alt="Rejestracja - img"
+        ></img>
       </div>
       <div className={`loginForm ${isLoginFormVisible ? 'active' : ''}`}>
         <h1>Logowanie</h1>

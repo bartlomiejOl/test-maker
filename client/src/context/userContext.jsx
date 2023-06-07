@@ -8,11 +8,20 @@ export function UserContextProvider({ children }) {
 
   useEffect(() => {
     if (!user) {
-      axios.get('/profile').then(({ data }) => {
-        setUser(data);
-      });
+      const token = sessionStorage.getItem('token');
+      if (token) {
+        axios.defaults.headers.common['Authorization'] = token;
+        axios
+          .get('/profile')
+          .then(({ data }) => {
+            setUser(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     }
-  }, []);
+  }, [user]);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
