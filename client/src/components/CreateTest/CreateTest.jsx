@@ -233,7 +233,7 @@ function CreateTest() {
     if (selectedQuestions.length === 0) {
       setPdfName('');
     }
-  });
+  }, [selectedQuestions.length]);
 
   return (
     <div className="CreateTest">
